@@ -68,33 +68,19 @@ class GATLayer(nn.Module):
         e = self.leakyrelu(torch.einsum('hei,hio->heo', edge_features, self.a))
         e = e.squeeze(-1)  # [num_heads, num_edges]
         
-        # Apply softmax per destination node
-        attention = torch.zeros(self.num_heads, num_nodes, num_nodes, device=x.device)
-        attention[:, src, dst] = e
-        
-        # Mask and normalize
+        # Softmax-normalise attention scores per destination node
         attention_scores = []
         for h in range(self.num_heads):
-            attn_h = torch.zeros(num_nodes, num_nodes, device=x.device)
-            attn_h[src, dst] = e[h]
-            
-            # Apply softmax per row (destination node)
-            row_sum = torch.sparse.FloatTensor(
-                edge_index, 
-                torch.ones(edge_index.size(1), device=x.device),
-                torch.Size([num_nodes, num_nodes])
-            ).to_dense().sum(dim=0, keepdim=True).t() + 1e-16
-            
-            # Simpler approach: use scatter for softmax
+            # Numerically-stable softmax: subtract max before exp
             alpha = torch.zeros(num_nodes, num_nodes, device=x.device)
             alpha[src, dst] = torch.exp(e[h] - e[h].max())
-            
-            # Normalize by destination node
+
+            # Normalise: sum incoming weights per destination node
             alpha_sum = torch.zeros(num_nodes, device=x.device)
             alpha_sum.scatter_add_(0, dst, alpha[src, dst])
             alpha_sum = alpha_sum[dst] + 1e-16
             alpha[src, dst] = alpha[src, dst] / alpha_sum
-            
+
             attention_scores.append(alpha)
         
         attention = torch.stack(attention_scores, dim=0)  # [num_heads, num_nodes, num_nodes]
@@ -117,7 +103,7 @@ class SimpleGNN(nn.Module):
     Simple GNN model for disjunctive graph job shop scheduling.
     Processes a single graph with both precedence and machine constraints.
     """
-    def __init__(self, node_feature_dim=4, hidden_dim=64, num_heads=4, num_layers=3, dropout=0.1):
+    def __init__(self, node_feature_dim=4, hidden_dim=16, num_heads=1, num_layers=2, dropout=0.1):
         super(SimpleGNN, self).__init__()
         
         self.node_feature_dim = node_feature_dim
@@ -152,12 +138,8 @@ class SimpleGNN(nn.Module):
         self.final_node_dim = hidden_dim
         self.final_graph_dim = hidden_dim
         
-        # Graph-level pooling
-        self.graph_pooling = nn.Sequential(
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, hidden_dim)
-        )
+        # Simplified graph-level pooling (just one layer)
+        self.graph_pooling = nn.Linear(hidden_dim, hidden_dim)
         
     def forward(self, node_features, edge_index):
         """
@@ -202,7 +184,7 @@ class JobShopGNNPolicy(nn.Module):
     Policy network for PPO that uses GNN to process job shop scheduling graphs.
     Outputs action logits and value estimates.
     """
-    def __init__(self, node_feature_dim=4, hidden_dim=64, num_heads=4, num_layers=3):
+    def __init__(self, node_feature_dim=4, hidden_dim=16, num_heads=1, num_layers=2):
         super(JobShopGNNPolicy, self).__init__()
         
         # GNN encoder
@@ -213,26 +195,18 @@ class JobShopGNNPolicy(nn.Module):
             num_layers=num_layers
         )
         
-        # Policy head (actor) - outputs logits for each operation
-        self.policy_head = nn.Sequential(
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, 1)  # Score for each operation
-        )
+        # Policy head (actor) - simplified to single layer
+        self.policy_head = nn.Linear(hidden_dim, 1)  # Score for each operation
         
-        # Value head (critic) - outputs state value
-        self.value_head = nn.Sequential(
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Linear(hidden_dim, 1)
-        )
+        # Value head (critic) - simplified to single layer
+        self.value_head = nn.Linear(hidden_dim, 1)
         
     def forward(self, node_features, edge_index, mask=None):
         """
         Args:
             node_features: [num_nodes, node_feature_dim]
             edge_index: [2, num_edges] tensor
-            mask: [num_nodes] boolean tensor indicating valid actions (optional)
+            mask: ignored, kept for compatibility
         
         Returns:
             dict with:
@@ -247,10 +221,6 @@ class JobShopGNNPolicy(nn.Module):
         
         # Compute action logits for each operation
         action_logits = self.policy_head(node_embeddings).squeeze(-1)  # [num_nodes]
-        
-        # Apply mask if provided (mask invalid actions)
-        if mask is not None:
-            action_logits = action_logits.masked_fill(~mask, float('-inf'))
         
         # Compute state value
         value = self.value_head(graph_embedding).squeeze(-1)  # scalar
@@ -274,18 +244,30 @@ class JobShopGNNPolicy(nn.Module):
         Returns:
             action, log_prob, entropy, value
         """
-        output = self.forward(node_features, edge_index, mask)
+        output = self.forward(node_features, edge_index, mask=None)
         action_logits = output['action_logits']
         value = output['value']
         
-        # Create categorical distribution
-        probs = F.softmax(action_logits, dim=-1)
+        # Simple softmax without mask complications
+        log_probs_raw = F.log_softmax(action_logits, dim=-1)
+        probs = torch.exp(log_probs_raw)
+        
+        # Ensure valid probabilities
+        probs = torch.clamp(probs, min=1e-8)
+        probs = probs / (probs.sum() + 1e-8)
+        
         dist = torch.distributions.Categorical(probs=probs)
         
         if action is None:
             action = dist.sample()
+            # Handle masking via rejection if needed
+            if mask is not None:
+                attempts = 0
+                while not mask[action] and attempts < 10:
+                    action = dist.sample()
+                    attempts += 1
         
-        log_prob = dist.log_prob(action)
+        log_prob = log_probs_raw[action]
         entropy = dist.entropy()
         
         return action, log_prob, entropy, value
@@ -348,7 +330,7 @@ def main():
     print("=" * 60)
     
     # Generate a job shop instance
-    instances = generate_general_instances(num_instances=1, seed=42)
+    instances = generate_general_instances(num_instances=1, seed=420)
     instance = instances[0]
     
     print(f"\nInstance: {instance}")
@@ -372,8 +354,8 @@ def main():
     # Create GNN policy
     policy = JobShopGNNPolicy(
         node_feature_dim=4,
-        hidden_dim=64,
-        num_heads=4,
+        hidden_dim=32,
+        num_heads=2,
         num_layers=3
     )
     
