@@ -1,5 +1,5 @@
 from operation import Operation
-from jobshop_instance import JobShopInstance
+from jobshop import JobShopInstance
 
 import random
 
@@ -58,3 +58,11 @@ def generate_general_instances(
         instance_list.append(instance)
 
     return instance_list
+
+if __name__ == "__main__":
+    instances = generate_general_instances()
+    print(f"Generated {len(instances)} instances.")
+
+    print("\nSample instance:")
+    if instances:
+        print(instances[0].jobs)

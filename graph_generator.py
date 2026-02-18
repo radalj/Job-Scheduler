@@ -1,5 +1,5 @@
 from operation import Operation
-from jobshop_instance import JobShopInstance
+from jobshop import JobShopInstance
 import random
 from generator import generate_general_instances
 
