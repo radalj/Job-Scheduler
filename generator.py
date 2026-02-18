@@ -2,6 +2,7 @@ from operation import Operation
 from jobshop import JobShopInstance
 
 import random
+import json
 
 def generate_instances(seed = 400):
     random.seed(seed)
@@ -59,10 +60,63 @@ def generate_general_instances(
 
     return instance_list
 
-if __name__ == "__main__":
-    instances = generate_general_instances()
-    print(f"Generated {len(instances)} instances.")
+# Function to save instances to JSON
+def save_instances_to_json(instances, file_path):
+    """
+    Save job shop instances to a JSON file.
 
-    print("\nSample instance:")
-    if instances:
-        print(instances[0].jobs)
+    Args:
+        instances: List of JobShopInstance objects.
+        file_path: Path to the JSON file.
+    """
+    data = []
+    for instance in instances:
+        jobs_data = []
+        for job in instance.jobs:
+            job_data = []
+            for op in job:
+                job_data.append({
+                    'machine_id': op.machine_id,
+                    'duration': op.duration
+                })
+            jobs_data.append(job_data)
+        data.append({'jobs': jobs_data})
+
+    with open(file_path, 'w') as f:
+        json.dump(data, f, indent=4)
+
+# Function to load instances from JSON
+def load_instances_from_json(file_path):
+    """
+    Load job shop instances from a JSON file.
+
+    Args:
+        file_path: Path to the JSON file.
+
+    Returns:
+        List of JobShopInstance objects.
+    """
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+
+    instances = []
+    for instance_data in data:
+        jobs = []
+        for job_data in instance_data['jobs']:
+            job = []
+            for op_data in job_data:
+                job.append(Operation(
+                    machine_id=op_data['machine_id'],
+                    duration=op_data['duration']
+                ))
+            jobs.append(job)
+        instances.append(JobShopInstance(jobs=jobs))
+
+    return instances
+
+if __name__ == "__main__":
+    # Example usage
+    instances = generate_instances()
+    save_instances_to_json(instances, "instances.json")
+    loaded_instances = load_instances_from_json("instances.json")
+    print(f"Saved and loaded {len(loaded_instances)} instances successfully.")
