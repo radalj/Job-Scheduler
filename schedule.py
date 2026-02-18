@@ -18,6 +18,17 @@ class Schedule:
     def __str__(self):
         return f"Schedule for {self.job_shop_instance.name}: {self.schedule}"
     
+    def makespan(self):
+        # Calculate the makespan of the schedule
+        max_completion_time = 0
+        for job in self.job_shop_instance.jobs:
+            for op in job:
+                start_time = self.get_operation_start_time(op.operation_id)
+                if start_time is not None:
+                    completion_time = start_time + op.duration
+                    max_completion_time = max(max_completion_time, completion_time)
+        return max_completion_time
+    
     def plot(self):
         # Plot the schedule using a Gantt chart for each machine
         machine_schedules = {}

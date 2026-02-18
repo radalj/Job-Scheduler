@@ -67,7 +67,7 @@ class JobShopGymEnv(gym.Env):
     def __init__(
         self,
         instances: Union[JobShopInstance, List[JobShopInstance]],
-        max_ops: Optional[int] = None,
+        max_ops: Optional[int] = 1500,
         reward_mode: str = "sparse",
         normalize_features: bool = True,
         max_edges_multiplier: float = 2.5,
@@ -80,8 +80,13 @@ class JobShopGymEnv(gym.Env):
         self._reward_mode = reward_mode
         self._normalize_features = normalize_features
 
-        # Fixed sizes derived from the largest possible instance
-        self.max_ops: int = max_ops or max(i.num_operations for i in instances)
+        # Ensure max_ops is explicitly set to the value used during training
+        self.max_ops: int = max_ops or 1500  # Default to 1500 operations
+        # Ensure max_ops during testing does not exceed training max_ops
+        if self.max_ops > max_ops:
+            print(f"Warning: max_ops during testing ({self.max_ops}) exceeds training max_ops ({max_ops}). Padding observations.")
+            self.max_ops = max_ops
+
         self.node_feat_dim: int = JobShopEnv.NODE_FEATURE_DIM  # 7
         # Worst-case edge upper bound based on max_ops
         self.max_edges: int = int(self.max_ops * self.max_ops * max_edges_multiplier)

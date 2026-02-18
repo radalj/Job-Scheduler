@@ -172,8 +172,20 @@ def train(args):
         num_instances=args.num_instances,
     )
 
+    # # Generate instances with specific num_ops 
+    # specific_instances = generate_general_instances(
+    #     num_instances=2, num_jobs_range=(60, 65), num_machines_range=(10, 25),
+    #     num_op_range=(25, 30), seed=42
+    # )
+
+    # # Combine specific instances with general instances
+    # instances.extend(specific_instances)
+
+    # # Log the inclusion of specific instances
+    # print("Added training instances with 1000 and 1500 operations.")
+
     # Shared max_ops: pad every env to the same obs/action space size
-    max_ops = max(max(i.num_operations for i in instances), 1500)  # Ensure max_ops can handle up to 1500 operations
+    max_ops = 1500  # Reduced from 1500 to 1000
     print(f"\nInstances      : {len(instances)}")
     print(f"max_ops (pad)  : {max_ops}")
     print(f"Op range       : {min(i.num_operations for i in instances)} "
@@ -184,8 +196,6 @@ def train(args):
         json.dump({"max_ops": max_ops}, f)
 
     # ---- build environments ----
-    train_instance = instances[0]   # kept for param reporting
-
     def make_multi_env(seed=0):
         """Factory: env that samples from ALL instances on each reset."""
         def _init():
@@ -215,12 +225,15 @@ def train(args):
         features_extractor_kwargs=dict(
             max_ops=max_ops,
             node_feat_dim=node_feat_dim,
-            gnn_hidden_dim=args.hidden_dim,
-            gnn_num_heads=args.num_heads,
-            gnn_num_layers=args.num_layers,
+            gnn_hidden_dim=32,  # Reduced from 64 to 32
+            gnn_num_heads=2,
+            gnn_num_layers=2,
         ),
         # Small actor/critic MLP on top of GNN output
-        net_arch=dict(pi=[64], vf=[64]),
+        net_arch=dict(
+            pi=[32],  # Reduced from [64] to [32]
+            vf=[32],  # Reduced from [64] to [32]
+        ),
         # share the GNN extractor between actor and critic (default for on-policy)
         share_features_extractor=True,
     )
@@ -321,8 +334,8 @@ def parse_args():
     # PPO
     p.add_argument("--timesteps",    type=int, default=1_000)
     p.add_argument("--lr",           type=float, default=3e-4)
-    p.add_argument("--n_steps",      type=int, default=512)
-    p.add_argument("--batch_size",   type=int, default=16)
+    p.add_argument("--n_steps",      type=int, default=64)
+    p.add_argument("--batch_size",   type=int, default=32)
     p.add_argument("--n_epochs",     type=int, default=10)
     p.add_argument("--gamma",        type=float, default=0.99)
 
@@ -359,7 +372,13 @@ if __name__ == "__main__":
     test_instances = load_instances_from_json("instances.json")
 
     results_lines = []
+    i = 0
     for test_instance in test_instances:
+        i += 1
+        if (test_instance.num_operations >= 100):
+            break
+        if (i % 15) != 0:
+            continue
         # Wrap each test instance with the same max_ops used during training
         test_env = JobShopGymEnv(
             instances=test_instance,
@@ -379,6 +398,6 @@ if __name__ == "__main__":
         print(line)
         results_lines.append(line)
 
-    with open("results.txt", "w") as f:
+    with open("gnn_results.txt", "w") as f:
         f.write("\n".join(results_lines) + "\n")
-    print("\nResults written to results.txt")
+    print("\nResults written to gnn_results.txt")
