@@ -1,2 +1,3 @@
 #ignore pycahche files
 __pycache__/
+venv/
