@@ -603,5 +603,163 @@ def main():
     print("=" * 70)
 
 
+def small_main():
+    parser = argparse.ArgumentParser(description="Corrected PPO + GNN trainer for Job Shop Scheduling")
+    parser.add_argument("--instances-file", type=str, default="instances.json")
+    parser.add_argument("--max-instances", type=int, default=50)
+    parser.add_argument("--eval-instances", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=20)
+    parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--model-type", type=str, choices=["gnn", "muxgnn"], default="muxgnn")
+    parser.add_argument("--hidden-dim", type=int, default=32)
+    parser.add_argument("--num-heads", type=int, default=2)
+    parser.add_argument("--num-layers", type=int, default=2)
+    parser.add_argument("--ppo-epochs", type=int, default=4)
+    parser.add_argument("--minibatch-size", type=int, default=64)
+    parser.add_argument("--checkpoint-path", type=str, default="checkpoints/small_muxgnn_ppo.pt")
+    parser.add_argument("--eval-only", action="store_true")
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    instances = get_instances(args.instances_file, args.max_instances, args.seed)
+    if len(instances) == 0:
+        raise ValueError("No instances found for training.")
+
+    if args.eval_only:
+        eval_instances = instances[: max(1, args.eval_instances)]
+        print(f"Evaluating {len(eval_instances)} instances using: {args.checkpoint_path}")
+        print("Use evaluate_model.py for a better evaluation interface:")
+        print(f"  python evaluate_model.py {args.checkpoint_path} --max-instances {len(eval_instances)}")
+        return
+
+    policy = build_policy(
+        model_type=args.model_type,
+        node_feature_dim=8,  # Match JobShopEnv in new_ppo.py (8 features)
+        hidden_dim=args.hidden_dim,
+        num_heads=args.num_heads,
+        num_layers=args.num_layers,
+    )
+
+    trainer = PPOScheduler(
+        policy=policy,
+        lr=args.lr,
+        ppo_epochs=args.ppo_epochs,
+        minibatch_size=args.minibatch_size,
+        device=device,
+    )
+
+    print("=" * 70)
+    print("Training PPO + GNN for Job Shop Scheduling")
+    print(f"Device: {device}")
+    print(f"Instances: {len(instances)}")
+    print(f"Model type: {args.model_type}")
+    print(f"Epochs: {args.epochs}")
+    print("=" * 70)
+
+    stats = trainer.train(instances, epochs=args.epochs, verbose=True)
+
+    trainer.save_checkpoint(
+        checkpoint_path=args.checkpoint_path,
+        metadata={
+            "model_type": args.model_type,
+            "node_feature_dim": 8,  # Match JobShopEnv in new_ppo.py (8 features)
+            "hidden_dim": args.hidden_dim,
+            "num_heads": args.num_heads,
+            "num_layers": args.num_layers,
+            "lr": args.lr,
+            "seed": args.seed,
+        },
+    )
+
+    print("=" * 70)
+    print(f"Best avg makespan: {stats['best_avg_makespan']:.3f}")
+    print(f"Saved model: {args.checkpoint_path}")
+    print("\nTo evaluate the model on new instances, run:")
+    print(f"  python evaluate_model.py {args.checkpoint_path} --max-instances 10")
+    print("=" * 70)
+
+
+def train_gnn():
+    parser = argparse.ArgumentParser(description="Corrected PPO + GNN trainer for Job Shop Scheduling")
+    parser.add_argument("--instances-file", type=str, default="instances.json")
+    parser.add_argument("--max-instances", type=int, default=30)
+    parser.add_argument("--eval-instances", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=20)
+    parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--model-type", type=str, choices=["gnn", "muxgnn"], default="gnn")
+    parser.add_argument("--hidden-dim", type=int, default=32)
+    parser.add_argument("--num-heads", type=int, default=2)
+    parser.add_argument("--num-layers", type=int, default=1)
+    parser.add_argument("--ppo-epochs", type=int, default=4)
+    parser.add_argument("--minibatch-size", type=int, default=32)
+    parser.add_argument("--checkpoint-path", type=str, default="checkpoints/small_gnn_ppo.pt")
+    parser.add_argument("--eval-only", action="store_true")
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
+
+    set_seed(args.seed)
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    instances = get_instances(args.instances_file, args.max_instances, args.seed)
+    if len(instances) == 0:
+        raise ValueError("No instances found for training.")
+
+    if args.eval_only:
+        eval_instances = instances[: max(1, args.eval_instances)]
+        print(f"Evaluating {len(eval_instances)} instances using: {args.checkpoint_path}")
+        print("Use evaluate_model.py for a better evaluation interface:")
+        print(f"  python evaluate_model.py {args.checkpoint_path} --max-instances {len(eval_instances)}")
+        return
+
+    policy = build_policy(
+        model_type=args.model_type,
+        node_feature_dim=8,  # Match JobShopEnv in new_ppo.py (8 features)
+        hidden_dim=args.hidden_dim,
+        num_heads=args.num_heads,
+        num_layers=args.num_layers,
+    )
+
+    trainer = PPOScheduler(
+        policy=policy,
+        lr=args.lr,
+        ppo_epochs=args.ppo_epochs,
+        minibatch_size=args.minibatch_size,
+        device=device,
+    )
+
+    print("=" * 70)
+    print("Training PPO + GNN for Job Shop Scheduling")
+    print(f"Device: {device}")
+    print(f"Instances: {len(instances)}")
+    print(f"Model type: {args.model_type}")
+    print(f"Epochs: {args.epochs}")
+    print("=" * 70)
+
+    stats = trainer.train(instances, epochs=args.epochs, verbose=True)
+
+    trainer.save_checkpoint(
+        checkpoint_path=args.checkpoint_path,
+        metadata={
+            "model_type": args.model_type,
+            "node_feature_dim": 8,  # Match JobShopEnv in new_ppo.py (8 features)
+            "hidden_dim": args.hidden_dim,
+            "num_heads": args.num_heads,
+            "num_layers": args.num_layers,
+            "lr": args.lr,
+            "seed": args.seed,
+        },
+    )
+
+    print("=" * 70)
+    print(f"Best avg makespan: {stats['best_avg_makespan']:.3f}")
+    print(f"Saved model: {args.checkpoint_path}")
+    print("\nTo evaluate the model on new instances, run:")
+    print(f"  python evaluate_model.py {args.checkpoint_path} --max-instances 10")
+    print("=" * 70)
+
+
 if __name__ == "__main__":
-    main()
+    train_gnn()
