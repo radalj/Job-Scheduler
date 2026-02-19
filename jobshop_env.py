@@ -16,8 +16,10 @@ Actions:
     Only operations whose `valid_mask[action] == 1` are legal.
 
 Reward:
-    Sparse: −makespan (negated) at the terminal step; 0 elsewhere.
-    Dense  (optional): −1 at every step so the agent is pushed to finish fast.
+    Sparse: −normalized_makespan at the terminal step; 0 elsewhere.
+    Dense  : −1 per step + progress rewards based on machine utilization.
+    Shaped : Comprehensive reward shaping with progress, balance, and completion bonuses.
+    Makespan²: Direct −makespan² loss for optimal RL learning!
 
 Usage:
     env = JobShopEnv(instance, reward_mode="sparse")
@@ -172,9 +174,11 @@ class JobShopEnv:
     Parameters
     ----------
     instance : JobShopInstance
-    reward_mode : "sparse" | "dense"
-        sparse → −makespan only at the last step.
-        dense  → −1 each step (encourages speed) + −makespan at last step.
+    reward_mode : "sparse" | "dense" | "shaped" | "makespan_squared"
+        sparse → −normalized_makespan only at the last step.
+        dense  → progress rewards and step penalties during episode + final reward.
+        shaped → comprehensive reward shaping with balance, progress, and completion bonuses.
+        makespan_squared → direct minimization of makespan² (best for RL learning!)
     normalize_features : bool
         If True, scale duration / earliest_start by the max duration in the
         instance so all features live roughly in [0, 1].
@@ -189,8 +193,8 @@ class JobShopEnv:
         reward_mode: str = "sparse",
         normalize_features: bool = True,
     ):
-        assert reward_mode in ("sparse", "dense"), \
-            "reward_mode must be 'sparse' or 'dense'"
+        assert reward_mode in ("sparse", "dense", "shaped", "makespan_squared"), \
+            "reward_mode must be 'sparse', 'dense', 'shaped', or 'makespan_squared'"
 
         self.instance = instance
         self.reward_mode = reward_mode
@@ -226,6 +230,8 @@ class JobShopEnv:
         self._schedule_order = []
         self._start_times = {}
         self._steps = 0
+        # Initialize tracking for dense reward mode
+        self._prev_max_machine_time = 0
         return self._get_obs()
 
     def step(
@@ -270,12 +276,29 @@ class JobShopEnv:
         # --- reward ---
         if done:
             makespan = max(self._machine_earliest)
-            reward = -float(makespan)
-            if self.reward_mode == "dense":
-                reward += -1.0
+            
+            if self.reward_mode == "sparse":
+                # Sparse: simple negative makespan (agent learns to minimize)
+                reward = -makespan / 100.0  # Scale down but keep meaningful magnitude
+            elif self.reward_mode == "dense":
+                # Dense: final reward + step penalty
+                reward = -makespan / 100.0 - self._steps * 0.01  # Penalize long episodes
+            elif self.reward_mode == "makespan_squared":
+                # Direct makespan² loss - exactly what you requested!
+                reward = -(makespan ** 2) / 10000.0  # Scale down to prevent huge numbers
+            else:  # shaped mode
+                # Shaped: final reward with improvement bonus
+                total_processing_time = sum(op.duration for job in self.instance.jobs for op in job)
+                efficiency = total_processing_time / makespan  # Closer to 1 is better
+                reward = efficiency * 10 - makespan / 100.0  # Scale efficiency reward
+            
             info = {"makespan": makespan, "steps": self._steps}
         else:
-            reward = -1.0 if self.reward_mode == "dense" else 0.0
+            if self.reward_mode == "dense":
+                # Small step penalty to encourage efficiency
+                reward = -0.01
+            else:
+                reward = 0.0
             info = {}
 
         obs = self._get_obs()

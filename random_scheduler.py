@@ -2,6 +2,7 @@ import random
 from jobshop import JobShopInstance
 from schedule import Schedule
 from operation import Operation
+from generator import load_instances_from_json
 
 def random_schedule(instance: JobShopInstance):
     """
@@ -50,11 +51,18 @@ def random_schedule(instance: JobShopInstance):
 
 if __name__ == "__main__":
     # Example usage
-    instance = JobShopInstance(jobs=[
-        [Operation(machine_id=0, duration=3), Operation(machine_id=1, duration=2)],
-        [Operation(machine_id=1, duration=4), Operation(machine_id=0, duration=1)]
-    ], name="ExampleInstance")
-
-    schedule = random_schedule(instance)
-    print(schedule)
-    schedule.plot()
+    load_instance = load_instances_from_json("instances.json")
+    result_lines = []
+    i = 0
+    for instance in load_instance:
+        i += 1
+        if (i % 10) != 0:
+            continue
+        schedule = random_schedule(instance)
+        makespan = schedule.makespan()
+        line = f"Instance: {instance.name} | Makespan: {makespan}"
+        result_lines.append(line)
+    
+    with open("random_results.txt", "w") as f:
+        f.write("\n".join(result_lines) + "\n")
+    print("\nResults written to random_results.txt")
