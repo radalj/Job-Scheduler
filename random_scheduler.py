@@ -56,8 +56,8 @@ if __name__ == "__main__":
     i = 0
     for instance in load_instance:
         i += 1
-        if (i % 10) != 0:
-            continue
+        # if (i % 10) != 0:
+            # continue
         schedule = random_schedule(instance)
         makespan = schedule.makespan()
         line = f"Instance: {instance.name} | Makespan: {makespan}"
