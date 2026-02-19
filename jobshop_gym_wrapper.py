@@ -57,7 +57,7 @@ class JobShopGymEnv(gym.Env):
         Pad all observations to this operation count.  Must be >= the
         largest instance's num_operations.  When None, uses the maximum
         across the provided instances.
-    reward_mode : "sparse" | "dense"
+    reward_mode : "sparse" | "dense" | "shaped" | "makespan_squared"
     normalize_features : bool
     max_edges_multiplier : float
     """
@@ -88,8 +88,9 @@ class JobShopGymEnv(gym.Env):
             self.max_ops = max_ops
 
         self.node_feat_dim: int = JobShopEnv.NODE_FEATURE_DIM  # 7
-        # Worst-case edge upper bound based on max_ops
-        self.max_edges: int = int(self.max_ops * self.max_ops * max_edges_multiplier)
+        # Realistic edge upper bound: conjunctive (≤max_ops) + disjunctive (≤max_ops*machines/jobs ratio)
+        # Use linear scaling instead of quadratic to avoid massive memory usage
+        self.max_edges: int = min(int(self.max_ops * 15), 20000)  # Much more reasonable bound
 
         # ---- observation space (fixed size, padded) ----
         self.observation_space = spaces.Dict({
