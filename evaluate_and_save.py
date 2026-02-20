@@ -109,8 +109,8 @@ def main():
             try:
                 makespan = evaluate_instance_8dim(policy, instance, device=args.device)
                 instance_name = getattr(instance, "name", "JobShopInstance")
-                line = f"Instance: {instance} | Makespan: {int(makespan)}"
-                print(f"{index + 1}/{total_instances} -> {line}")
+                line = f"Instance: {instance_name} | Makespan: {int(makespan)}"
+                print(f"{index + 1}/{total_instances} -> Instance: {instance} | Makespan: {int(makespan)}")
             except Exception as exc:
                 line = f"Instance: JobShopInstance | Error: {exc}"
                 print(f"{index + 1}/{total_instances} -> FAILED: {exc}")
