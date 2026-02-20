@@ -222,7 +222,7 @@ class PPOScheduler:
         max_grad_norm: float = 0.5,
         ppo_epochs: int = 4,
         minibatch_size: int = 64,
-        device: str = "cpu",
+        device: str = "cuda" if torch.cuda.is_available() else "cpu",
     ):
         self.policy = policy.to(device)
         self.optimizer = torch.optim.Adam(self.policy.parameters(), lr=lr)
