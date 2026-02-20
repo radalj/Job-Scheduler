@@ -1,0 +1,250 @@
+Instance: JobShopInstance | Makespan: 13556
+Instance: JobShopInstance | Makespan: 13643
+Instance: JobShopInstance | Makespan: 12662
+Instance: JobShopInstance | Makespan: 13945
+Instance: JobShopInstance | Makespan: 14683
+Instance: JobShopInstance | Makespan: 12633
+Instance: JobShopInstance | Makespan: 14081
+Instance: JobShopInstance | Makespan: 14368
+Instance: JobShopInstance | Makespan: 13026
+Instance: JobShopInstance | Makespan: 13829
+Instance: JobShopInstance | Makespan: 7608
+Instance: JobShopInstance | Makespan: 7196
+Instance: JobShopInstance | Makespan: 7300
+Instance: JobShopInstance | Makespan: 7152
+Instance: JobShopInstance | Makespan: 6565
+Instance: JobShopInstance | Makespan: 6952
+Instance: JobShopInstance | Makespan: 7981
+Instance: JobShopInstance | Makespan: 7355
+Instance: JobShopInstance | Makespan: 7872
+Instance: JobShopInstance | Makespan: 7018
+Instance: JobShopInstance | Makespan: 6963
+Instance: JobShopInstance | Makespan: 7245
+Instance: JobShopInstance | Makespan: 7552
+Instance: JobShopInstance | Makespan: 7467
+Instance: JobShopInstance | Makespan: 7184
+Instance: JobShopInstance | Makespan: 7277
+Instance: JobShopInstance | Makespan: 7674
+Instance: JobShopInstance | Makespan: 6831
+Instance: JobShopInstance | Makespan: 6939
+Instance: JobShopInstance | Makespan: 6941
+Instance: JobShopInstance | Makespan: 7165
+Instance: JobShopInstance | Makespan: 6713
+Instance: JobShopInstance | Makespan: 7688
+Instance: JobShopInstance | Makespan: 7030
+Instance: JobShopInstance | Makespan: 6948
+Instance: JobShopInstance | Makespan: 7390
+Instance: JobShopInstance | Makespan: 6922
+Instance: JobShopInstance | Makespan: 7639
+Instance: JobShopInstance | Makespan: 7049
+Instance: JobShopInstance | Makespan: 6980
+Instance: JobShopInstance | Makespan: 4399
+Instance: JobShopInstance | Makespan: 4341
+Instance: JobShopInstance | Makespan: 4341
+Instance: JobShopInstance | Makespan: 4523
+Instance: JobShopInstance | Makespan: 3946
+Instance: JobShopInstance | Makespan: 4258
+Instance: JobShopInstance | Makespan: 4108
+Instance: JobShopInstance | Makespan: 4281
+Instance: JobShopInstance | Makespan: 3839
+Instance: JobShopInstance | Makespan: 4539
+Instance: JobShopInstance | Makespan: 4263
+Instance: JobShopInstance | Makespan: 4230
+Instance: JobShopInstance | Makespan: 4132
+Instance: JobShopInstance | Makespan: 4010
+Instance: JobShopInstance | Makespan: 3981
+Instance: JobShopInstance | Makespan: 3830
+Instance: JobShopInstance | Makespan: 4260
+Instance: JobShopInstance | Makespan: 4126
+Instance: JobShopInstance | Makespan: 4076
+Instance: JobShopInstance | Makespan: 4406
+Instance: JobShopInstance | Makespan: 4234
+Instance: JobShopInstance | Makespan: 4208
+Instance: JobShopInstance | Makespan: 4005
+Instance: JobShopInstance | Makespan: 3771
+Instance: JobShopInstance | Makespan: 3767
+Instance: JobShopInstance | Makespan: 4374
+Instance: JobShopInstance | Makespan: 4411
+Instance: JobShopInstance | Makespan: 4682
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=900) | Makespan: 4058
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=900) | Makespan: 3828
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19930
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19446
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21615
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20098
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21419
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20000
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20568
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20308
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20811
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20736
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19958
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18522
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19711
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21371
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21086
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20474
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19550
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21763
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20796
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19873
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20312
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19274
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20342
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18806
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18200
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19810
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20539
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18296
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20589
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19952
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11850
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10757
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10535
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11909
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11729
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11667
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10583
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10738
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10870
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11888
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11048
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11773
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11080
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10577
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10853
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11367
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10269
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10073
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10831
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10839
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11043
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11499
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10369
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 12603
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10685
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11487
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11925
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11653
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10325
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11003
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5732
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6132
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6965
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5882
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6309
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5748
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5751
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6082
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6886
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5834
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6794
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6033
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5442
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6022
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5432
+Instance: JobShopInstance | Makespan: 5432
+Instance: JobShopInstance | Makespan: 6358
+Instance: JobShopInstance | Makespan: 5674
+Instance: JobShopInstance | Makespan: 5437
+Instance: JobShopInstance | Makespan: 6239
+Instance: JobShopInstance | Makespan: 6244
+Instance: JobShopInstance | Makespan: 6310
+Instance: JobShopInstance | Makespan: 6500
+Instance: JobShopInstance | Makespan: 5879
+Instance: JobShopInstance | Makespan: 6318
+Instance: JobShopInstance | Makespan: 5925
+Instance: JobShopInstance | Makespan: 6214
+Instance: JobShopInstance | Makespan: 6759
+Instance: JobShopInstance | Makespan: 5592
+Instance: JobShopInstance | Makespan: 6167
+Instance: JobShopInstance | Makespan: 6207
+Instance: JobShopInstance | Makespan: 27422
+Instance: JobShopInstance | Makespan: 28667
+Instance: JobShopInstance | Makespan: 28806
+Instance: JobShopInstance | Makespan: 26190
+Instance: JobShopInstance | Makespan: 29216
+Instance: JobShopInstance | Makespan: 28814
+Instance: JobShopInstance | Makespan: 27801
+Instance: JobShopInstance | Makespan: 27863
+Instance: JobShopInstance | Makespan: 24208
+Instance: JobShopInstance | Makespan: 27423
+Instance: JobShopInstance | Makespan: 27121
+Instance: JobShopInstance | Makespan: 26843
+Instance: JobShopInstance | Makespan: 27301
+Instance: JobShopInstance | Makespan: 27151
+Instance: JobShopInstance | Makespan: 28096
+Instance: JobShopInstance | Makespan: 27587
+Instance: JobShopInstance | Makespan: 27175
+Instance: JobShopInstance | Makespan: 27677
+Instance: JobShopInstance | Makespan: 29107
+Instance: JobShopInstance | Makespan: 27565
+Instance: JobShopInstance | Makespan: 28420
+Instance: JobShopInstance | Makespan: 27447
+Instance: JobShopInstance | Makespan: 28843
+Instance: JobShopInstance | Makespan: 29076
+Instance: JobShopInstance | Makespan: 27723
+Instance: JobShopInstance | Makespan: 24737
+Instance: JobShopInstance | Makespan: 27138
+Instance: JobShopInstance | Makespan: 29618
+Instance: JobShopInstance | Makespan: 26723
+Instance: JobShopInstance | Makespan: 27543
+Instance: JobShopInstance | Makespan: 15251
+Instance: JobShopInstance | Makespan: 14746
+Instance: JobShopInstance | Makespan: 16302
+Instance: JobShopInstance | Makespan: 14850
+Instance: JobShopInstance | Makespan: 15696
+Instance: JobShopInstance | Makespan: 16026
+Instance: JobShopInstance | Makespan: 14339
+Instance: JobShopInstance | Makespan: 15909
+Instance: JobShopInstance | Makespan: 15273
+Instance: JobShopInstance | Makespan: 15702
+Instance: JobShopInstance | Makespan: 14627
+Instance: JobShopInstance | Makespan: 16884
+Instance: JobShopInstance | Makespan: 17571
+Instance: JobShopInstance | Makespan: 16301
+Instance: JobShopInstance | Makespan: 16056
+Instance: JobShopInstance | Makespan: 14633
+Instance: JobShopInstance | Makespan: 17004
+Instance: JobShopInstance | Makespan: 15696
+Instance: JobShopInstance | Makespan: 9614
+Instance: JobShopInstance | Makespan: 14987
+Instance: JobShopInstance | Makespan: 15906
+Instance: JobShopInstance | Makespan: 17873
+Instance: JobShopInstance | Makespan: 15187
+Instance: JobShopInstance | Makespan: 17098
+Instance: JobShopInstance | Makespan: 14771
+Instance: JobShopInstance | Makespan: 15378
+Instance: JobShopInstance | Makespan: 14660
+Instance: JobShopInstance | Makespan: 15674
+Instance: JobShopInstance | Makespan: 15276
+Instance: JobShopInstance | Makespan: 14490
+Instance: JobShopInstance | Makespan: 9158
+Instance: JobShopInstance | Makespan: 8048
+Instance: JobShopInstance | Makespan: 8377
+Instance: JobShopInstance | Makespan: 8160
+Instance: JobShopInstance | Makespan: 7996
+Instance: JobShopInstance | Makespan: 9101
+Instance: JobShopInstance | Makespan: 8363
+Instance: JobShopInstance | Makespan: 7635
+Instance: JobShopInstance | Makespan: 8544
+Instance: JobShopInstance | Makespan: 8777
+Instance: JobShopInstance | Makespan: 9336
+Instance: JobShopInstance | Makespan: 8346
+Instance: JobShopInstance | Makespan: 8432
+Instance: JobShopInstance | Makespan: 8111
+Instance: JobShopInstance | Makespan: 9197
+Instance: JobShopInstance | Makespan: 8226
+Instance: JobShopInstance | Makespan: 8185
+Instance: JobShopInstance | Makespan: 8666
+Instance: JobShopInstance | Makespan: 9357
+Instance: JobShopInstance | Makespan: 9051
+Instance: JobShopInstance | Makespan: 7978
+Instance: JobShopInstance | Makespan: 9334
+Instance: JobShopInstance | Makespan: 8834
+Instance: JobShopInstance | Makespan: 8746
+Instance: JobShopInstance | Makespan: 8390
+Instance: JobShopInstance | Makespan: 8005
+Instance: JobShopInstance | Makespan: 7574
+Instance: JobShopInstance | Makespan: 9430
+Instance: JobShopInstance | Makespan: 8220
