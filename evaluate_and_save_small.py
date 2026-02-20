@@ -67,13 +67,11 @@ def count_completed_results(output_file: str) -> int:
 
 
 def main():
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Using device: {device}")
     parser = argparse.ArgumentParser(description="Resumable muxGNN evaluation to text file")
-    parser.add_argument("--checkpoint", type=str, default="checkpoints/muxgnn_full.pt")
+    parser.add_argument("--checkpoint", type=str, default="checkpoints/small_muxgnn_ppo.pt")
     parser.add_argument("--instances-file", type=str, default="instances.json")
-    parser.add_argument("--output", type=str, default="muxGNN_result_end.txt")
-    parser.add_argument("--device", type=str, default=device, choices=["cpu", "cuda"])
+    parser.add_argument("--output", type=str, default="small_muxGNN_result.txt")
+    parser.add_argument("--device", type=str, default="cpu", choices=["cpu", "cuda"])
     args = parser.parse_args()
 
     print(f"Loading checkpoint: {args.checkpoint}")
@@ -101,15 +99,15 @@ def main():
         print("All instances are already evaluated. Nothing to do.")
         return
 
-    print(f"Resuming from instance index: {total_instances-completed-1} (1-based: {completed + 1})")
+    print(f"Resuming from instance index: {completed} (1-based: {completed + 1})")
 
     with open(args.output, "a", encoding="utf-8") as file:
-        for index in range(total_instances - completed - 1, completed -1, -1):
+        for index in range(completed, total_instances):
             instance = instances[index]
             try:
                 makespan = evaluate_instance_8dim(policy, instance, device=args.device)
                 instance_name = getattr(instance, "name", "JobShopInstance")
-                line = f"Instance: {instance} | Makespan: {int(makespan)}"
+                line = f"Instance: {instance_name} | Makespan: {int(makespan)}"
                 print(f"{index + 1}/{total_instances} -> {line}")
             except Exception as exc:
                 line = f"Instance: JobShopInstance | Error: {exc}"
