@@ -70,9 +70,9 @@ def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
     parser = argparse.ArgumentParser(description="Resumable muxGNN evaluation to text file")
-    parser.add_argument("--checkpoint", type=str, default="checkpoints/muxgnn_full.pt")
+    parser.add_argument("--checkpoint", type=str, default="checkpoints/small_gnn_ppo.pt")
     parser.add_argument("--instances-file", type=str, default="instances.json")
-    parser.add_argument("--output", type=str, default="muxGNN_result.txt")
+    parser.add_argument("--output", type=str, default="gnn_results_end.txt")
     parser.add_argument("--device", type=str, default=device, choices=["cpu", "cuda"])
     args = parser.parse_args()
 
