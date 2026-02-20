@@ -1,4 +1,4 @@
-Instance: JobShopInstance | Makespan: 9614
+
 Instance: JobShopInstance | Makespan: 8220
 Instance: JobShopInstance | Makespan: 9430
 Instance: JobShopInstance | Makespan: 7574
@@ -103,4 +103,80 @@ Instance: JobShopInstance | Makespan: 6239
 Instance: JobShopInstance | Makespan: 5437
 Instance: JobShopInstance | Makespan: 5674
 Instance: JobShopInstance | Makespan: 6358
-Instance: JobShopInstance | Makespan: 5432
+Instance: JobShopInstance | Makespan: 5432Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5432
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6022
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5442
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6033
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6794
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5834
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6886
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6082
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5751
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5748
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6309
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5882
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6965
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 6132
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=1200) | Makespan: 5732
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11003
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10325
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11653
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11925
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11487
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10685
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 12603
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10369
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11499
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11043
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10839
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10831
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10073
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10269
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11367
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10853
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10577
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11080
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11773
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11048
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11888
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10870
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10738
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10583
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11667
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11729
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11909
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10535
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 10757
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=10, operations=1200) | Makespan: 11850
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19952
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20589
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18296
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20539
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19810
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18200
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18806
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20342
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19274
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20312
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19873
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20796
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21763
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19550
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20474
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21086
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21371
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19711
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 18522
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19958
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20736
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20811
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20308
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20568
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20000
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21419
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 20098
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 21615
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19446
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1200) | Makespan: 19930
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=900) | Makespan: 3828
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=20, operations=900) | Makespan: 4058
