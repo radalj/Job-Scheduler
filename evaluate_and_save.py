@@ -72,7 +72,7 @@ def main():
     parser = argparse.ArgumentParser(description="Resumable muxGNN evaluation to text file")
     parser.add_argument("--checkpoint", type=str, default="checkpoints/muxgnn_full.pt")
     parser.add_argument("--instances-file", type=str, default="instances.json")
-    parser.add_argument("--output", type=str, default="muxGNN_result.txt")
+    parser.add_argument("--output", type=str, default="muxGNN_result_2.txt")
     parser.add_argument("--device", type=str, default=device, choices=["cpu", "cuda"])
     args = parser.parse_args()
 
@@ -101,10 +101,8 @@ def main():
         print("All instances are already evaluated. Nothing to do.")
         return
 
-    print(f"Resuming from instance index: {completed} (1-based: {completed + 1})")
-
     with open(args.output, "a", encoding="utf-8") as file:
-        for index in range(completed, total_instances):
+        for index in range(2000, total_instances):
             instance = instances[index]
             try:
                 makespan = evaluate_instance_8dim(policy, instance, device=args.device)
