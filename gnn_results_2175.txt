@@ -1,0 +1,8 @@
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 21793زم
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 22602
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 23395
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 23282
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 23024
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 23548
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 21917
+Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=1500) | Makespan: 23175
