@@ -67,7 +67,7 @@ def count_completed_results(output_file: str) -> int:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Resumable muxGNN evaluation to text file")
+    parser = argparse.ArgumentParser(description="Resumable gnn evaluation to text file")
     parser.add_argument("--checkpoint", type=str, default="checkpoints/small_muxgnn_ppo.pt")
     parser.add_argument("--instances-file", type=str, default="instances.json")
     parser.add_argument("--output", type=str, default="small_muxGNN_result.txt")

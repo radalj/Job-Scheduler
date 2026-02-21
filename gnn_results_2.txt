@@ -1,1 +1,0 @@
-Instance: JobShopInstance(name=JobShopInstance, jobs=60, machines=5, operations=900) | Makespan: 12028
