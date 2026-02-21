@@ -72,7 +72,7 @@ def main():
     parser = argparse.ArgumentParser(description="Resumable muxGNN evaluation to text file")
     parser.add_argument("--checkpoint", type=str, default="checkpoints/small_gnn_ppo.pt")
     parser.add_argument("--instances-file", type=str, default="instances.json")
-    parser.add_argument("--output", type=str, default="small_gnn_result.txt")
+    parser.add_argument("--output", type=str, default="small_gnn_result_from2100.txt")
     parser.add_argument("--device", type=str, default=device, choices=["cpu", "cuda"])
     args = parser.parse_args()
 
@@ -92,7 +92,7 @@ def main():
 
     instances = load_instances_from_json(args.instances_file)
     total_instances = len(instances)
-    completed = count_completed_results(args.output)
+    completed = count_completed_results(args.output) + 2100
 
     print(f"Total instances: {total_instances}")
     print(f"Already evaluated in {args.output}: {completed}")
